@@ -11,7 +11,6 @@
         <button class="fav"><svg xmlns="http://www.w3.org/2000/svg" height="48px" viewBox="0 -960 960 960" width="48px" fill="#FFFFFF">
             <path d="m480-121-41-37q-105.77-97.12-174.88-167.56Q195-396 154-451.5T96.5-552Q80-597 80-643q0-90.15 60.5-150.58Q201-854 290-854q57 0 105.5 27t84.5 78q42-54 89-79.5T670-854q89 0 149.5 60.42Q880-733.15 880-643q0 46-16.5 91T806-451.5Q765-396 695.88-325.56 626.77-255.12 521-158l-41 37Zm0-79q101.24-93 166.62-159.5Q712-426 750.5-476t54-89.14q15.5-39.13 15.5-77.72 0-66.14-42-108.64T670.22-794q-51.52 0-95.37 31.5T504-674h-49q-26-56-69.85-88-43.85-32-95.37-32Q224-794 182-751.5t-42 108.82q0 38.68 15.5 78.18 15.5 39.5 54 90T314-358q66 66 166 158Zm0-297Z"/></svg></button></div>
     </header>
-
     <div class="sidebar">
         <div class="sidebar-header">
             <div class="sidebar-title">Projects</div>
@@ -27,41 +26,60 @@
         <div class="todo-header">  
         <div class="title">My-todos</div>
          <div class="add-todo-btn"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M440-120v-320H120v-80h320v-320h80v320h320v80H520v320h-80Z"/></svg></div>
-    </div>
-            <div id="form-container" class="hidden">  <form id="newTodoForm" class="todo-form">
+        </div>
+        <div id="form-container" class="hidden">  
+              <form id="newTodoForm" class="todo-form">
     
-    <div>
-      <input type="text" id="title" placeholder="Title" required />
-      <label style="display: flex; gap: 1rem; align-items: center;">Due date:<input type="date" id="dueDate" required />
-  </label>  </div>
+              <div>
+                  <input type="text" id="title" placeholder="Title" required />
+                  <label style="display: flex; gap: 1rem; align-items: center;">Due date:<input type="date" id="dueDate" required />
+                  </label>  
+              </div>
 
-    <div>
-      <textarea id="desc" placeholder="Description" rows="1" cols="49"></textarea>
-    </div>
+              <div>
+                    <textarea id="desc" placeholder="Description" rows="1" cols="49"></textarea>
+              </div>
     
-    <div class="form-actions">
+            <div class="form-actions">
       
-      <div class="check-priority">
-        <label for="check">Done:
-         <input type="checkbox" id="check" /></label>
+                  <div class="check-priority">
+                     <label for="check">Done:<input type="checkbox" id="check" /></label>
         
-        <label>
-          Priority:
-          <select id="priority">
-            <option value="0">Low</option>
-            <option value="1">Medium</option>
-            <option value="2">High</option>
-          </select>
-        </label>
-      </div>
+                <label>
+                    Priority:
+                    <select id="priority">
+                  <option value="0">Low</option>
+                  <option value="1">Medium</option>
+                  <option value="2">High</option>
+                  </select>
+                </label>
+             </div>
 
-      <div>
-        <button type="submit">Add Todo</button>
-      </div>
+            <div>
+              <button type="submit" class="submit">Add</button>
+            </div>
 
-    </div>
+          </div>
 
-  </form>`</div>
-    </div>
+         </form>
+        </div>
+
+        <div class="todo-items">
+          <div class="todo-item">
+            <div class="title">Fuel tank</div><div class="due-date">29-10-14</div>
+            <div class="p-d">
+            <div class="priority">!</div><div class="delete"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m376-300 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 180q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520Zm-400 0v520-520Z"/></svg></div>
+          </div>
+          </div>
+          <div class="todo-item"><div class="title">Wash clothes</div><div class="due-date">29-10-14</div><div class="p-d">
+            <div class="priority">!</div>
+            <div class="edit"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg></div>
+            <div class="delete">
+              <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#FFFFFF"><path d="m376-300 104-104 104 104 56-56-104-104 104-104-56-56-104 104-104-104-56 56 104 104-104 104 56 56Zm-96 180q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520Zm-400 0v520-520Z"/></svg></div>
+          </div>
+          </div>
+          </div>
+        </div>
+  </div>
 </body>
 </html>
