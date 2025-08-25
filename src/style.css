@@ -244,8 +244,13 @@ align-items: center;
 gap: 1rem;
 }
 
-.todo-items{
-
+.todo-items .empty-state{
+  padding: 1.2rem;
+  background-color: #8e8e8e;
+  margin: 1rem;
+  border: solid 1px black;
+  font-size: 1.1rem;
+  
 }
 
 .todo-item{
@@ -264,4 +269,10 @@ gap: 1rem;
   display: flex;
   align-items: center;
   gap: 2rem;
+}
+
+.todo-item .delete:hover svg{
+  cursor: pointer;
+  fill: var(--fav);
+  transform: scale(1.1);
 }
