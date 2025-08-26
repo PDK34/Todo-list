@@ -10,6 +10,7 @@ export default function addTodo(){
 }
 
 const form = document.querySelector('#newTodoForm');
+const addTodoBtn = document.querySelector('.add-todo-btn');
 
 
 form.addEventListener('submit' ,(e) => {
@@ -27,6 +28,9 @@ form.addEventListener('submit' ,(e) => {
 
   form.reset()
   formContainer.classList.add('hidden');
+    addTodoBtn.classList.remove('active');
+  
+
 
   addTodoList(newTodo);
 

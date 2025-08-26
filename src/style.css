@@ -254,7 +254,7 @@ gap: 1rem;
 }
 
 .todo-item{
-  background-color: var(--header-dark);
+  background-color: #323232;
   display: flex;
   gap: 2rem;
   justify-content: space-between;
@@ -308,4 +308,18 @@ gap: 1rem;
   display: flex;
   justify-content: start;
   margin-right: 0.4rem;
+}
+.todo-item.checked{
+background-color: var(--header-dark);
+}
+.todo-item.checked .title{
+  text-decoration: line-through;
+}
+.todo-item.checked .due-date{
+  text-decoration: line-through;
+}
+
+.edit svg:hover{
+  transform: scale(1.2);
+  fill: var(--ok);
 }
