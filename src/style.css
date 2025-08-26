@@ -224,7 +224,7 @@ body{
 }
 
 #form-container .submit:hover{
-  background-color: #a5a5a5;
+  background-color: var(--accent);
   color: var(--bg);
   transform: scale(1.1);
 }
@@ -275,4 +275,37 @@ gap: 1rem;
   cursor: pointer;
   fill: var(--fav);
   transform: scale(1.1);
+}
+
+.urgent{
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.4);
+  border: 2px solid rgba(255, 0, 0, 0.4);
+  background-color: #838383;
+  color: var(--bg);
+}
+
+.moderate{
+    box-shadow: 0 0 5px rgba(255, 255, 0, 0.2);
+  border: 1px solid rgba(255, 0, 0, 0.4);
+  background-color: #9b9b9b;
+  color: var(--header-dark);
+}
+
+.priority svg{
+  height: 1.5rem;
+  width: auto;
+}
+
+.priority .moderate-icon svg{
+  height: 1.1rem;
+  width: auto;
+}
+
+.priority .urgent-icon{
+  font-size: 1.7rem;
+  color: red;
+  font-weight: 700;
+  display: flex;
+  justify-content: start;
+  margin-right: 0.4rem;
 }
