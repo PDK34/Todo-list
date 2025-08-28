@@ -3,6 +3,7 @@ import deleteTodo from "./deleteTodo.js";
 import checkUpdate from "./checkTodo.js";
 import {format} from "date-fns";
 import showDescription from "./showDescription.js";
+import editTodo from "./editTodo.js";
 
 let myTodos = [];
 
@@ -116,6 +117,10 @@ function createTodoElement(todo){
 
    desc.addEventListener('click',()=>{
     showDescription(tododiv);
+   })
+
+   edit.addEventListener('click',()=>{
+    editTodo(todo);
    })
 
   rightDiv.append(priority,desc,edit,deleteBtn);

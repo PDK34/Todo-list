@@ -1,7 +1,8 @@
 // webpack.config.js
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { watchFile } = require("fs");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 
 module.exports = {
   mode: "development",
@@ -19,13 +20,18 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/template.html",
     }),
+        new MiniCssExtractPlugin({
+      filename: "[name].[contenthash].css", // generates main.[hash].css
+    }),
+
   ],
   module: {
     rules: [
-      {
+            {
         test: /\.css$/i,
-        use: ["style-loader", "css-loader"],
+        use: [MiniCssExtractPlugin.loader, "css-loader"], // <-- extract CSS
       },
+
       {
         test: /\.html$/i,
         loader: "html-loader",

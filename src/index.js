@@ -5,7 +5,7 @@ import displayTodos from "./displayTodos";
 const addTodoBtn = document.querySelector('.add-todo-btn');
 
 
-document.addEventListener('DOMContentLoaded', displayTodos);
+displayTodos();
 addTodoBtn.addEventListener('click',() => {
     if(!addTodoBtn.classList.contains('active')){
         addTodo();
@@ -22,5 +22,4 @@ addTodoBtn.addEventListener('click',() => {
         textarea.style.height = '';
 
     }
-    displayTodos();
 })
