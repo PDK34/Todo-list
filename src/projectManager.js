@@ -28,7 +28,7 @@ export function setActiveProject(id) {
 export function initializeProjects() {
   const data = localStorage.getItem("projects");
   if (!data || data === "undefined") {
-    const defaultProject = new Project("Default Project");
+    const defaultProject = new Project("MyTodos");
     saveProjects([defaultProject]);
     setActiveProject(defaultProject.id);
   }

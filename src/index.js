@@ -47,3 +47,24 @@ if (addProjectBtn) {
     displayTodos();
   });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const infoBtn = document.querySelector(".info"); 
+  const modalContainer = document.getElementById("info-container");
+  const closeBtn = modalContainer.querySelector(".info-close");
+
+  infoBtn.addEventListener("click", () => {
+    modalContainer.style.display = "block";
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modalContainer.style.display = "none";
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modalContainer) {
+      modalContainer.style.display = "none";
+    }
+  });
+});
+

@@ -10,6 +10,16 @@ export default function displayTodos() {
   const container = document.querySelector(".todo-items");
   if (!container) return;
 
+  const headerTitle = document.querySelector('.todo-header .title');
+  if (headerTitle) {
+    if (activeProject) {
+      headerTitle.textContent = activeProject.name;
+    } else {
+      headerTitle.textContent = "MyTodos";
+    }
+  }
+
+
   if (!activeProject || !Array.isArray(activeProject.todos) || activeProject.todos.length === 0) {
     container.innerHTML =
       '<div class="empty-state">No todos added yet. Add one to get started!</div>';
