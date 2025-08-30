@@ -1,2 +1,11 @@
 # Todo-list
-Basic Todo list built with HTML, CSS and JavaScript for learning
+A basic project-based Todo List built with HTML, CSS and JavaScript 
+
+##  Features  
+-  Add, edit, and delete todos  
+-  Organize todos under different projects  
+-  Check tasks as completed  
+-  Set priority levels for todo items
+-  Add and delete projects
+-  localStorage for persistent data storage
+
