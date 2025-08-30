@@ -371,6 +371,9 @@ opacity: 50%;
   opacity: 1;
 }
 
+.add-project-btn:hover{
+  cursor: pointer;
+}
 html {
   margin: 0;
   padding: 0;

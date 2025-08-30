@@ -1,20 +1,15 @@
+import { getProjects, saveProjects } from "./projectManager.js";
 
-export default function checkUpdate(updatedTodo){
-    const storedTodos = localStorage.getItem('todos');
+export default function checkUpdate(updatedTodo) {
+  const projects = getProjects();
+  if (!projects || projects.length === 0) return;
 
-    if(!storedTodos) return;
-
-    let todos = JSON.parse(storedTodos);
-
-    todos = todos.map( todo => {
-        if(todo.id === updatedTodo.id){
-            return{
-                ...todo,
-                check:updatedTodo.check
-            }
-        }
-        return todo;
-    })
-
-    localStorage.setItem('todos' , JSON.stringify(todos))
+  for (let project of projects) {
+    const idx = project.todos.findIndex(t => t.id === updatedTodo.id);
+    if (idx !== -1) {
+      project.todos[idx] = { ...project.todos[idx], check: !!updatedTodo.check };
+      saveProjects(projects);
+      return;
+    }
+  }
 }

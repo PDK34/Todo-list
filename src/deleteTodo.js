@@ -1,12 +1,17 @@
-export default function deleteTodo(todo){
+import { getProjects, saveProjects } from "./projectManager.js";
 
-  const storedTodos = localStorage.getItem('todos');
-  if(storedTodos){
-    const todos = JSON.parse(storedTodos);
-    const updatedTodos = todos.filter(t => t.id!==todo.id )
+export default function deleteTodo(todo) {
+  const projects = getProjects();
+  if (!projects || projects.length === 0) return;
 
-    localStorage.setItem('todos' , JSON.stringify(updatedTodos));
+  let changed = false;
+  for (let p of projects) {
+    const before = p.todos.length;
+    p.todos = p.todos.filter(t => t.id !== todo.id);
+    if (p.todos.length !== before) changed = true;
   }
 
-    
+  if (changed) {
+    saveProjects(projects);
+  }
 }

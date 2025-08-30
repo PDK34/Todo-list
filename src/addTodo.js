@@ -1,72 +1,75 @@
-import Todo from "./todo";
-import displayTodos from "./displayTodos";
+import Todo from "./todo.js";
+import displayTodos from "./displayTodos.js";
+import displayProjects from "./displayProjects.js";
+import { getActiveProject, saveProjects, getProjects, setActiveProject } from "./projectManager.js";
+import Project from "./project.js";
 
 let editingTodoId = null;
+
 export function setEditingTodoId(id) {
   editingTodoId = id;
 }
+
 export function getEditingTodoId() {
   return editingTodoId;
 }
 
-const formContainer = document.querySelector('#form-container');
-export default function addTodo(){
-    if (!formContainer.classList.contains('hidden')) return;
-    formContainer.classList.remove('hidden');
+const formContainer = document.querySelector("#form-container");
+const form = document.querySelector("#newTodoForm");
+const addTodoBtn = document.querySelector(".add-todo-btn");
+const submitBtn = document.querySelector(".submit");
 
-
+export default function addTodo() {
+  if (!formContainer.classList.contains("hidden")) return;
+  formContainer.classList.remove("hidden");
+  form.reset();
+  submitBtn.textContent = editingTodoId ? "Update" : "Add";
 }
-
-const form = document.querySelector('#newTodoForm');
-const addTodoBtn = document.querySelector('.add-todo-btn');
-const submitBtn = document.querySelector('.submit');
-
 
 form.onsubmit = (e) => {
   e.preventDefault();
 
+  let projects = getProjects();
+  let activeProject = getActiveProject();
+
+  if (!activeProject) {
+    const defaultProject = new Project("MyTodos");
+    projects.push(defaultProject);
+    setActiveProject(defaultProject.id);
+    saveProjects(projects);
+    activeProject = defaultProject;
+
+    displayProjects();
+  }
+
   const newTodo = new Todo(
-      document.querySelector('#title').value,
-      document.querySelector('#desc').value,
-      document.querySelector('#dueDate').value,
-      document.querySelector('#check').checked,
-      document.querySelector('#priority').value
+    document.querySelector("#title").value,
+    document.querySelector("#desc").value,
+    document.querySelector("#dueDate").value,
+    document.querySelector("#check").checked,
+    parseInt(document.querySelector("#priority").value, 10)
   );
 
   if (editingTodoId) {
-    newTodo.id = editingTodoId;
-    updateTodoList(newTodo);
-    editingTodoId = null; 
+    const index = activeProject.todos.findIndex((t) => t.id === editingTodoId);
+    if (index !== -1) {
+      newTodo.id = editingTodoId;
+      activeProject.todos[index] = newTodo;
+    }
+    editingTodoId = null;
     submitBtn.textContent = "Add";
   } else {
     newTodo.id = crypto.randomUUID();
-    addTodoList(newTodo);
+    activeProject.todos.push(newTodo);
   }
 
-  form.reset()
-  formContainer.classList.add('hidden');
-    addTodoBtn.classList.remove('active');
-  
-}
-
-export function addTodoList(todo){
-  let todos = JSON.parse(localStorage.getItem('todos')) || [];
-  todos.push(todo);
-  localStorage.setItem('todos', JSON.stringify(todos));
+  projects = projects.map((p) => (p.id === activeProject.id ? activeProject : p));
+  saveProjects(projects);
 
   displayTodos();
+  displayProjects();
 
-}
-
-export function updateTodoList(updatedTodo) {
-  let todos = JSON.parse(localStorage.getItem('todos')) || [];
-  const index = todos.findIndex(t => t.id === updatedTodo.id );
-  if (index !== -1) {
-    todos[index] = updatedTodo;
-  } else {
-    todos.push(updatedTodo);
-  }
-
-  localStorage.setItem('todos', JSON.stringify(todos));
-  displayTodos();
-}
+  form.reset();
+  formContainer.classList.add("hidden");
+  addTodoBtn.classList.remove("active");
+};
